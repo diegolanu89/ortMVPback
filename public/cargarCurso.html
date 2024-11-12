@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Curso</title>
+</head>
+<body>
+  <h1>Agregar un nuevo curso</h1>
+  <form id="cursoForm">
+    <label for="nombre">Nombre del Curso:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="catedra">Cátedra:</label>
+    <input type="text" id="catedra" name="catedra" required>
+
+    <label for="horas">Horas:</label> <!-- Cambiado a "horas" -->
+    <input type="number" id="horas" name="horas" required>
+
+    <button type="submit">Crear Curso</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    document.getElementById('cursoForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById('nombre').value;
+    const catedra = document.getElementById('catedra').value;
+    const horas = parseInt(document.getElementById('horas').value, 10); // Asegura que sea un número entero
+
+    // Verifica que horas sea un número entero positivo
+    if (isNaN(horas) || horas <= 0) {
+      alert('Por favor, ingrese un número entero positivo para las horas.');
+      return;
+    }
+
+    const nuevoCurso = {
+      nombre: nombre,
+      catedra: catedra,
+      horas: horas
+    };
+
+    try {
+      const response = await axios.post('http://localhost:3000/api/cursos', nuevoCurso);
+      alert('Curso creado con éxito: ' + JSON.stringify(response.data));
+    } catch (error) {
+      console.error('Error al crear el curso:', error.response ? error.response.data : error.message);
+      alert('Error al crear el curso');
+    }
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asignar Cursos</title>
+</head>
+<body>
+  <h1>Asignar Cursos a Usuario</h1>
+  <form id="asignarCursosForm">
+    <div id="cursosContainer">
+      <!-- Los checkboxes de cursos se agregarán dinámicamente aquí -->
+    </div>
+    <p id="noCursosMessage" style="display:none;">No hay cursos para asignar.</p>
+    <br><br>
+    <button type="submit" id="asignarButton" style="display:none;">Asignar Cursos</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    // Función para cargar los cursos disponibles desde el servidor
+    async function cargarCursos() {
+      try {
+        const response = await axios.get('http://localhost:3000/api/cursos');
+        const cursos = response.data;
+        const cursosContainer = document.getElementById('cursosContainer');
+        const noCursosMessage = document.getElementById('noCursosMessage');
+        const asignarButton = document.getElementById('asignarButton');
+
+        if (cursos.length > 0) {
+          // Si hay cursos, muestra los checkboxes y el botón
+          asignarButton.style.display = 'inline-block';
+          cursos.forEach(curso => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `curso-${curso._id}`;
+            checkbox.name = 'cursos';
+            checkbox.value = curso._id;
+
+            const label = document.createElement('label');
+            label.htmlFor = `curso-${curso._id}`;
+            label.textContent = `${curso.nombre} (${curso.catedra})`;
+
+            const div = document.createElement('div');
+            div.appendChild(checkbox);
+            div.appendChild(label);
+            cursosContainer.appendChild(div);
+          });
+        } else {
+          // Si no hay cursos, muestra el mensaje "No hay cursos para asignar"
+          noCursosMessage.style.display = 'block';
+        }
+      } catch (error) {
+        console.error('Error al cargar cursos:', error);
+      }
+    }
+
+    // Enviar los cursos seleccionados para asignarlos al usuario
+    document.getElementById('asignarCursosForm').addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      // Obtener los IDs de los cursos seleccionados
+      const selectedCheckboxes = Array.from(document.querySelectorAll('input[name="cursos"]:checked'));
+      const cursosIds = selectedCheckboxes.map(checkbox => checkbox.value);
+
+      try {
+        const token = localStorage.getItem('token'); // Asegúrate de que el token esté almacenado después de iniciar sesión
+        const response = await axios.post(
+          'http://localhost:3000/api/usuario/asignar-cursos',
+          { cursos: cursosIds },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        
+        alert(response.data.message);
+      } catch (error) {
+        console.error('Error al asignar los cursos:', error.response ? error.response.data.message : error.message);
+        alert('Error al asignar los cursos');
+      }
+    });
+
+    // Cargar lista de cursos al cargar la página
+    cargarCursos();
+  </script>
+</body>
+</html>

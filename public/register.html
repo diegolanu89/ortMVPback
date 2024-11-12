@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario</title>
+</head>
+<body>
+  <h1>Registro de Usuario</h1>
+  <form id="registerForm">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+
+    <label for="email">Correo Electrónico:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="contraseña">Contraseña:</label>
+    <input type="password" id="contraseña" name="contraseña" required><br><br>
+
+    <!-- Campo de entrada para Edad -->
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" required><br><br>
+
+    <button type="submit">Registrar</button>
+  </form>
+
+  <!-- Agrega Axios para manejar la solicitud HTTP -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async function (event) {
+      event.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+
+      // Obtén los valores del formulario
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      const contraseña = document.getElementById('contraseña').value;
+      const edad = parseInt(document.getElementById('edad').value, 10); // Convertir edad a número entero
+
+      // Objeto de datos del usuario con la edad incluida
+      const nuevoUsuario = {
+        nombre: nombre,
+        email: email,
+        contraseña: contraseña,
+        edad: edad
+      };
+
+      try {
+        // Envía los datos al servidor usando Axios
+        const response = await axios.post('http://localhost:3000/api/auth/register', nuevoUsuario);
+        alert('Registro exitoso: ' + response.data.message);
+      } catch (error) {
+        console.error('Error en el registro:', error.response ? error.response.data.message : error.message);
+        alert('Error en el registro');
+      }
+    });
+  </script>
+</body>
+</html>

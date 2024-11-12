@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminar Datos</title>
+</head>
+<body>
+  <h1>Eliminar Todos los Datos de la Base de Datos</h1>
+  <button id="eliminarDatosButton">Eliminar Datos</button>
+  <p id="mensaje"></p>
+
+  <script>
+    document.getElementById('eliminarDatosButton').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/eliminar-datos');
+        const mensaje = await response.text();
+        document.getElementById('mensaje').innerText = mensaje;
+      } catch (error) {
+        document.getElementById('mensaje').innerText = 'Error al eliminar los datos.';
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html>
