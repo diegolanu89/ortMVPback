@@ -5,6 +5,7 @@
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-blue">
   <img src="https://img.shields.io/badge/BACKEND-NODE.JS-orange">
   <img src="https://img.shields.io/badge/BD-MONGO%20DB-green">
+   <img src="https://img.shields.io/badge/DEPLOY-REST-red">
 </p>
 
 Este proyecto es una aplicación básica de backend construida con **Node.js** y **MongoDB**. Permite gestionar cursos y usuarios, asignar cursos a usuarios de forma aleatoria y registrar el progreso de cada usuario en los cursos asignados.
