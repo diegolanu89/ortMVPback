@@ -7,11 +7,16 @@ const usuarioRoutes = require('./routes/usuario');
 const alumnoRoutes = require('./routes/alumnos');
 const cargarDatos = require('./dbSeeder'); 
 const eliminarDatos = require('./dbCleaner'); 
+const cors = require('cors');
+
 
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Configura CORS
+app.use(cors())
 
 // Conectar a la base de datos
 connectDB();
@@ -21,6 +26,8 @@ app.use(express.json());
 
 // Configurar carpeta pública para archivos estáticos
 app.use(express.static('public'));
+
+
 
 // Rutas
 app.use('/api/auth', authRoutes);
