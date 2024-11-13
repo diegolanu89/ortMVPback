@@ -3,41 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BACKEND</title>
+  <title>Backend - Documentación e Integración</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    main {
+      flex: 1 0 auto;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .header-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #ff9800; /* Naranja */
+    }
+    .nav-wrapper, .page-footer {
+      background-color: #333;
+    }
+    .card-panel {
+      background-color: #424242;
+    }
+    .collection-item, .highlight, .table-container {
+      background-color: #333; /* Color oscuro para la tabla */
+    }
+    .btn, .btn:hover {
+      background-color: #ff9800; /* Naranja */
+    }
+    .table th, .table td {
+      color: #e0e0e0;
+    }
+    .collection-item {
+      color: #e0e0e0;
+    }
+    .footer-links a {
+      color: #ff9800;
+      margin-right: 10px;
+    }
+
+    .collection .collection-item{
+  background-color: #333333;
+}
+  </style>
 </head>
 <body>
-  <h1>TEST BACKEND</h1>
 
-  <!-- Enlace a la página de registro -->
-   <p>
-    <a href="register.html">Registrar Alumno</a>
-   </p>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Backend API MVP Grupo 3</a>
+    </div>
+  </nav>
 
-   <p>
-    <a href="login.html">Login</a>
-   </p>
+  <main>
+    <div class="container">
+      <div class="section">
+        <h4 class="center-align"><i class="material-icons header-icon">cloud</i>Información del Backend</h4>
+        <p class="flow-text">
+          Bienvenido a la documentación del backend para la aplicación de cursos. Este backend está construido en **Node.js** y **Express**, y proporciona una API para gestionar usuarios, cursos y progreso de estudiantes.
+        </p>
+      </div>
 
-   <p>
-    <a href="cerrarSesion.html">Cerrar Sesion</a>
-   </p>
+      <div class="section">
+        <h5><i class="material-icons">link</i> Enlace al Frontend</h5>
+        <p>
+          El frontend de esta aplicación está desarrollado en React, utilizando Vite y Material UI para proporcionar una experiencia de usuario moderna y responsiva.
+        </p>
+        <a href="https://ortmvp.onrender.com/" class="btn" target="_blank">Ir al Frontend</a>
+      </div>
 
-   <p>
-    <a href="cargarCurso.html">Cargar Curso</a>
-   </p>
+      <div class="section">
+        <h5><i class="material-icons">integration_instructions</i> Detalles de Integración</h5>
+        <ul class="collection">
+          <li class="collection-item">
+            <span class="title"><strong>Autenticación</strong></span>
+            <p>El backend proporciona una API de autenticación para el registro e inicio de sesión de usuarios. Los tokens JWT se utilizan para mantener sesiones seguras.</p>
+          </li>
+          <li class="collection-item">
+            <span class="title"><strong>Gestión de Cursos</strong></span>
+            <p>Los endpoints de cursos permiten al frontend obtener la lista de cursos disponibles, así como filtrar y paginar los resultados. Los usuarios autenticados también pueden asignarse cursos.</p>
+          </li>
+          <li class="collection-item">
+            <span class="title"><strong>Progreso de Estudiantes</strong></span>
+            <p>Cada usuario puede llevar un registro de su progreso en los cursos asignados. Los datos se sincronizan entre el frontend y el backend a través de la API de progreso.</p>
+          </li>
+        </ul>
+      </div>
 
-   <p>
-    <a href="asignarCursos.html">Asociar Cursos</a>
-   </p>
+      <div class="section">
+        <h5><i class="material-icons">api</i> API Endpoints</h5>
+        <div class="table-container card-panel"> <!-- Fondo oscuro para la tabla -->
+          <table class="highlight">
+            <thead>
+              <tr>
+                <th>Endpoint</th>
+                <th>Descripción</th>
+                <th>Método</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>/auth/register</td>
+                <td>Registrar un nuevo usuario</td>
+                <td>POST</td>
+              </tr>
+              <tr>
+                <td>/auth/login</td>
+                <td>Iniciar sesión y obtener token JWT</td>
+                <td>POST</td>
+              </tr>
+              <tr>
+                <td>/cursos</td>
+                <td>Obtener la lista de cursos disponibles</td>
+                <td>GET</td>
+              </tr>
+              <tr>
+                <td>/usuarios/:id/cursos</td>
+                <td>Asignar cursos a un usuario</td>
+                <td>PUT</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-   <p>
-    <a href="cargarDatosIniciales.html">Iniciar datos de BD</a>
-   </p>
+      <div class="section">
+        <h5><i class="material-icons">group</i> Integrantes del Equipo</h5>
+        <div class="table-container card-panel">
+          <table class="highlight">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Rol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Diego Peyrano</td>
+                <td>Team Leader</td>
+              </tr>
+              <tr>
+                <td>Melina</td>
+                <td>Developer</td>
+              </tr>
+              <tr>
+                <td>Aixa</td>
+                <td>Developer</td>
+              </tr>
+              <tr>
+                <td>Juan</td>
+                <td>Diseñador</td>
+              </tr>
+              <tr>
+                <td>Yael</td>
+                <td>QA</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-   <p>
-    <a href="eliminarDatos.html">Eliminar datos de BD</a>
-   </p>
+      <div class="section">
+        <h5><i class="material-icons">link</i> Enlaces de Recursos</h5>
+        <p class="footer-links">
+          <a href="https://trello.com/b/STEQRcRB/grupo-3-release-1-filtros" target="_blank">Tablero de Trello 1</a> |
+          <a href="https://trello.com/b/JNcZlpbk/grupo-3-relase-1-progreso" target="_blank">Tablero de Trello 2</a> |
+          <a href="https://figma.com" target="_blank">Diseño en Figma</a>
+        </p>
+      </div>
+    </div>
+  </main>
 
-  <!-- O puedes usar un botón -->
-  <button onclick="window.location.href='register.html'">Ir a Registro</button>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Sobre el Proyecto</h5>
+          <p class="grey-text text-lighten-4">Este proyecto tiene como objetivo facilitar la gestión de cursos y el seguimiento del progreso de los estudiantes mediante un sistema web fácil de usar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2024 Derechos Reservados
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
