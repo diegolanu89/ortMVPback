@@ -23,7 +23,7 @@
     .header-icon {
       font-size: 48px;
       margin-bottom: 20px;
-      color: #ff9800; /* Naranja */
+      color: #ff9800;
     }
     .nav-wrapper, .page-footer {
       background-color: #333;
@@ -32,10 +32,10 @@
       background-color: #424242;
     }
     .collection-item, .highlight, .table-container {
-      background-color: #333; /* Color oscuro para la tabla */
+      background-color: #333;
     }
     .btn, .btn:hover {
-      background-color: #ff9800; /* Naranja */
+      background-color: #ff9800;
     }
     .table th, .table td {
       color: #e0e0e0;
@@ -47,10 +47,9 @@
       color: #ff9800;
       margin-right: 10px;
     }
-
-    .collection .collection-item{
-  background-color: #333333;
-}
+    .collection .collection-item {
+      background-color: #333333;
+    }
   </style>
 </head>
 <body>
@@ -98,7 +97,7 @@
 
       <div class="section">
         <h5><i class="material-icons">api</i> API Endpoints</h5>
-        <div class="table-container card-panel"> <!-- Fondo oscuro para la tabla -->
+        <div class="table-container card-panel">
           <table class="highlight">
             <thead>
               <tr>
@@ -131,6 +130,28 @@
             </tbody>
           </table>
         </div>
+      </div>
+
+      <!-- Sección de Información sobre los Tableros de Trello -->
+      <div class="section">
+        <h5><i class="material-icons">dashboard</i> Información sobre nuestros Tableros de Trello</h5>
+        <p>Contamos con dos tableros de Trello dedicados a diferentes aspectos de nuestro proyecto:</p>
+        
+        <h6>Navegación con Filtros</h6>
+        <p>En este tablero, gestionamos el desarrollo de un sistema de navegación con filtros. Todas las tareas en el backlog de sprint han sido completadas, moviéndose a la columna de "Hecho" y listas para producción. Cada tarea está vinculada a su historia de usuario, mostrando los criterios de aceptación correspondientes, simulando un despliegue en el que los servicios ya se encuentran en línea.</p>
+
+        <h6>Visualización de Progresos de Cursos</h6>
+        <p>Este tablero organiza el progreso de los cursos, con una priorización de cinco niveles. En el backlog del primer sprint, se seleccionaron tareas de nivel 1. Todas las tareas están conectadas a sus respectivas historias de usuario para asegurar que cumplan con las necesidades del proyecto.</p>
+
+        <h6>Priorizaciones y Recursos</h6>
+        <p>Se han utilizado etiquetas de priorización y se han vinculado branches de GitHub en algunos casos para facilitar la conexión con los repositorios de backend y frontend. Además, los siguientes recursos están enlazados en las tareas del tablero:</p>
+        <ul>
+          <li>Branches en GitHub</li>
+          <li>Miro para diagramas de flujo</li>
+          <li>Figma para diseño de interfaces</li>
+          <li>Consola de MongoDB (acceso para usuarios autorizados)</li>
+          <li>Render para despliegues (acceso para usuarios autorizados)</li>
+        </ul>
       </div>
 
       <div class="section">
