@@ -30,9 +30,8 @@
     }
     .card-panel {
       background-color: #424242;
-    }
-    .collection-item, .highlight, .table-container {
-      background-color: #333;
+      padding: 20px;
+      border-radius: 8px;
     }
     .btn, .btn:hover {
       background-color: #ff9800;
@@ -40,15 +39,40 @@
     .table th, .table td {
       color: #e0e0e0;
     }
-    .collection-item {
-      color: #e0e0e0;
-    }
     .footer-links a {
       color: #ff9800;
       margin-right: 10px;
     }
+    h5 {
+      color: #ff9800;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #e0e0e0;
+    }
+    ul.custom-bullets li {
+      list-style: none;
+      padding-left: 1.5em;
+      text-indent: -1.5em;
+    }
+    ul.custom-bullets li:before {
+      content: "•";
+      color: #ff9800;
+      padding-right: 0.5em;
+    }
     .collection .collection-item {
       background-color: #333333;
+    }
+
+    #center{
+      display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
     }
   </style>
 </head>
@@ -134,24 +158,26 @@
 
       <!-- Sección de Información sobre los Tableros de Trello -->
       <div class="section">
-        <h5><i class="material-icons">dashboard</i> Información sobre nuestros Tableros de Trello</h5>
-        <p>Contamos con dos tableros de Trello dedicados a diferentes aspectos de nuestro proyecto:</p>
-        
-        <h6>Navegación con Filtros</h6>
-        <p>En este tablero, gestionamos el desarrollo de un sistema de navegación con filtros. Todas las tareas en el backlog de sprint han sido completadas, moviéndose a la columna de "Hecho" y listas para producción. Cada tarea está vinculada a su historia de usuario, mostrando los criterios de aceptación correspondientes, simulando un despliegue en el que los servicios ya se encuentran en línea.</p>
+        <h5 class="section-title"><i class="material-icons">dashboard</i> Gestión de Proyectos en Tableros de Trello</h5>
+        <div class="card-panel">
+          <p>Nuestro equipo organiza el desarrollo del proyecto en dos tableros de Trello, cada uno enfocado en una fase clave de la aplicación:</p>
 
-        <h6>Visualización de Progresos de Cursos</h6>
-        <p>Este tablero organiza el progreso de los cursos, con una priorización de cinco niveles. En el backlog del primer sprint, se seleccionaron tareas de nivel 1. Todas las tareas están conectadas a sus respectivas historias de usuario para asegurar que cumplan con las necesidades del proyecto.</p>
+          <h6>Navegación con Filtros</h6>
+          <p>Este tablero gestiona el desarrollo de la navegación mediante filtros. Las tareas del backlog han sido completadas y están listas para producción en la columna "Hecho". Cada tarea está enlazada a su historia de usuario correspondiente y a sus criterios de aceptación, emulando un despliegue donde los servicios están activos en línea.</p>
 
-        <h6>Priorizaciones y Recursos</h6>
-        <p>Se han utilizado etiquetas de priorización y se han vinculado branches de GitHub en algunos casos para facilitar la conexión con los repositorios de backend y frontend. Además, los siguientes recursos están enlazados en las tareas del tablero:</p>
-        <ul>
-          <li>Branches en GitHub</li>
-          <li>Miro para diagramas de flujo</li>
-          <li>Figma para diseño de interfaces</li>
-          <li>Consola de MongoDB (acceso para usuarios autorizados)</li>
-          <li>Render para despliegues (acceso para usuarios autorizados)</li>
-        </ul>
+          <h6>Visualización de Progresos de Cursos</h6>
+          <p>En este tablero, organizamos el progreso de los cursos, aplicando una priorización de cinco niveles. Las tareas de nivel 1 fueron seleccionadas para el primer sprint, y cada una está vinculada a su historia de usuario, asegurando que se cumplan los requisitos clave del proyecto.</p>
+
+          <h6>Priorizaciones y Recursos Adicionales</h6>
+          <p>Se emplearon etiquetas de priorización y se vincularon branches de GitHub para facilitar el acceso a los repositorios de backend y frontend. Otros recursos disponibles en las tareas del tablero incluyen:</p>
+          <ul class="custom-bullets">
+            <li>Branches en GitHub</li>
+            <li>Miro para diagramas de flujo</li>
+            <li>Figma para diseño de interfaces</li>
+            <li>Consola de MongoDB (solo para usuarios autorizados)</li>
+            <li>Render para despliegues (solo para usuarios autorizados)</li>
+          </ul>
+        </div>
       </div>
 
       <div class="section">
@@ -195,10 +221,20 @@
         <p class="footer-links">
           <a href="https://trello.com/b/STEQRcRB/grupo-3-release-1-filtros" target="_blank">Tablero de Trello 1</a> |
           <a href="https://trello.com/b/JNcZlpbk/grupo-3-relase-1-progreso" target="_blank">Tablero de Trello 2</a> |
-          <a href="https://figma.com" target="_blank">Diseño en Figma</a>
+          <a href="https://figma.com" target="_blank">Diseño en Figma</a> |
+          <a href="https://github.com/diegolanu89/ortMVPback" target="_blank">Repositorio Backend</a> |
+          <a href="https://github.com/diegolanu89/ortMVP" target="_blank">Repositorio Frontend</a>
         </p>
       </div>
     </div>
+
+
+    <div id="center" class="section">
+      <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/iA2HtB3QMJub29mvJzXGDk/Programacion-Nuevas-Tecnologias?node-id=3-3&embed-host=share" allowfullscreen></iframe>
+
+    </div>
+   
+
   </main>
 
   <footer class="page-footer">
